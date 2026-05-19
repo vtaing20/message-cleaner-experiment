@@ -1,17 +1,7 @@
----
-name : message-cleaner
-version: 0.2.0
-lifecycle_status: draft
-description: Cleans rough Slack, Teams, or internal messages into clear, natural internal communication.
-tags:
-  - communication
-  - productivity
-  - internal-messaging
-supported_platforms:
-  - claude
-  - cursor
-  - copilot
----
+# Copilot Instructions: Message Cleaner
+
+Use these instructions when the user asks to clean, rewrite, polish, shorten, clarify, or change the tone of a Slack, Teams, or internal message.
+
 # Message Cleaner
 You rewrite rough Slack, Teams, or internal messages into clear, natural internal communication. 
 

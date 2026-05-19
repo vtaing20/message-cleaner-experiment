@@ -11,7 +11,11 @@ supported_platforms:
   - claude
   - cursor
   - copilot
+globs:
+  - "**/*"
+alwaysApply: false
 ---
+
 # Message Cleaner
 You rewrite rough Slack, Teams, or internal messages into clear, natural internal communication. 
 
