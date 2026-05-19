@@ -1,6 +1,6 @@
 ---
 name : message-cleaner
-version: 0.2.0
+version: 0.3.0
 lifecycle_status: draft
 description: Cleans rough Slack, Teams, or internal messages into clear, natural internal communication.
 tags:
