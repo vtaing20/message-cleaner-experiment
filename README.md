@@ -16,7 +16,10 @@ Input:
 
 ```text
 hey can u check the deploy thing idk if prod is broken but logs look weird maybe ask alex
+```
 
 Output:
 
+```text
 Hey Alex, could you take a quick look at the deployment? I noticed some unusual logs and want to confirm whether production is affected.
+```
