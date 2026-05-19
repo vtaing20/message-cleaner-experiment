@@ -1,0 +1,61 @@
+schema_name: skill-frontmatter
+version: 0.1.0
+
+required_fields:
+  - name
+  - version
+  - lifecycle_status
+  - description
+  - supported_hosts
+
+optional_fields:
+  - tags
+  - owner
+  - dependencies
+  - min_framework_version
+
+fields:
+  name:
+    type: string
+    description: Unique skill name.
+
+  version:
+    type: semver
+    description: Semantic version of this skill release.
+
+  lifecycle_status:
+    type: enum
+    allowed_values:
+      - draft
+      - testing
+      - candidate
+      - active
+      - superseded
+      - needs_review
+      - degraded
+      - disabled
+      - deprecated
+      - archived
+      - rejected
+      - removed
+    description: Current declared lifecycle status of this skill version.
+
+  description:
+    type: string
+    description: Short explanation of what the skill does.
+
+  supported_hosts:
+    type: list
+    allowed_values:
+      - cursor
+      - claude
+      - copilot
+    description: AI hosts this skill can be generated for.
+
+  tags:
+    type: list
+    description: Search/filter tags for this skill.
+
+  dependencies:
+    type: object
+    description: Lightweight dependency declaration, such as MCP/tool requirements.

@@ -1,0 +1,78 @@
+transitions:
+  draft:
+    allowed:
+      - testing
+      - archived
+
+  testing:
+    allowed:
+      - candidate
+      - rejected
+      - needs_review
+      - disabled
+
+  candidate:
+    allowed:
+      - active
+      - rejected
+      - disabled
+      - archived
+
+  active:
+    allowed:
+      - superseded
+      - needs_review
+      - degraded
+      - disabled
+      - deprecated
+
+  canary:
+    allowed:
+      - active
+      - needs_review
+      - disabled
+      - deprecated
+
+  needs_review:
+    allowed:
+      - active
+      - degraded
+      - disabled
+      - deprecated
+      - archived
+
+  degraded:
+    allowed:
+      - active
+      - needs_review
+      - disabled
+      - deprecated
+
+  disabled:
+    allowed:
+      - active
+      - deprecated
+      - archived
+
+  superseded:
+    allowed:
+      - active
+      - deprecated
+      - archived
+
+  deprecated:
+    allowed:
+      - archived
+      - disabled
+
+  archived:
+    allowed:
+      - active
+
+  rejected:
+    allowed:
+      - draft
+      - archived
+
+  removed:
+    allowed: []

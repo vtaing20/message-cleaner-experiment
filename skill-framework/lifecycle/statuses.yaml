@@ -1,0 +1,48 @@
+statuses:
+  draft:
+    definition: Work-in-progress skill version that is not ready for validation or release.
+    phase: authoring
+
+  testing:
+    definition: Skill version currently undergoing CI/CD validation, evals, compatibility checks, or governance validation.
+    phase: validation
+
+  candidate:
+    definition: Skill version that passed validation and is eligible for promotion, but is not yet active.
+    phase: release
+
+  active:
+    definition: Current promoted and recommended version for normal agent/user usage.
+    phase: operational
+
+  superseded:
+    definition: Older version replaced by a newer active version, but still potentially usable.
+    phase: evolution
+
+  needs_review:
+    definition: Skill version with telemetry, eval, runtime, or governance concerns requiring investigation.
+    phase: operational
+
+  degraded:
+    definition: Skill version remains usable, but measurable quality, reliability, or performance degradation was detected.
+    phase: operational
+
+  disabled:
+    definition: Skill version intentionally blocked from execution or usage.
+    phase: governance
+
+  deprecated:
+    definition: Skill version officially discouraged for future use because it is obsolete, incompatible, risky, or replaced.
+    phase: retirement
+
+  archived:
+    definition: Frozen historical version kept for auditability, rollback reference, or traceability.
+    phase: retirement
+
+  rejected:
+    definition: Skill version failed validation, evals, or governance checks and cannot be promoted.
+    phase: validation
+
+  removed:
+    definition: Skill version is no longer distributed or available through the framework.
+    phase: retirement

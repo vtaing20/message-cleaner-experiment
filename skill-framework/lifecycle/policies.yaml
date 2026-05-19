@@ -1,0 +1,72 @@
+policies:
+  draft:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: Skill is still in draft and should not be used in production.
+
+  testing:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: Skill is currently being validated.
+
+  candidate:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: Skill passed validation but is not yet promoted.
+
+  active:
+    agents_can_use: true
+    recommended: true
+    show_warning: false
+    warning_message: null
+
+  superseded:
+    agents_can_use: true
+    recommended: false
+    show_warning: true
+    warning_message: A newer active version exists.
+
+  needs_review:
+    agents_can_use: true
+    recommended: false
+    show_warning: true
+    warning_message: This skill version requires review due to detected concerns.
+
+  degraded:
+    agents_can_use: true
+    recommended: false
+    show_warning: true
+    warning_message: This skill is usable but has degraded quality or reliability.
+
+  disabled:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: This skill version is disabled and cannot be used.
+
+  deprecated:
+    agents_can_use: true
+    recommended: false
+    show_warning: true
+    warning_message: This skill version is deprecated and should be avoided for new workflows.
+
+  archived:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: This skill version is archived and kept only for history or rollback.
+
+  rejected:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: This skill version failed validation and cannot be promoted.
+
+  removed:
+    agents_can_use: false
+    recommended: false
+    show_warning: true
+    warning_message: This skill version is no longer available.
