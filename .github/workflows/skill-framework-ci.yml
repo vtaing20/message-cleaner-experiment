@@ -1,0 +1,84 @@
+name: Skill Framework CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "skill-framework/**"
+      - "adapters/**"
+      - "scripts/**"
+      - ".github/workflows/skill-framework-ci.yml"
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "skill-framework/**"
+      - "adapters/**"
+      - "scripts/**"
+      - ".github/workflows/skill-framework-ci.yml"
+
+  workflow_dispatch:
+
+jobs:
+  validate-skill-framework:
+    name: Validate Skill Framework Prototype
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate host-specific skill outputs
+        run: |
+          python adapters/cursor/build_cursor_rule.py
+          python adapters/claude/build_claude_skill.py
+          python adapters/copilot/build_copilot_instructions.py
+
+      - name: Verify generated host outputs
+        run: |
+          test -f generated-hosts/cursor/.cursor/rules/message-cleaner.mdc
+          test -f generated-hosts/claude/message-cleaner/SKILL.md
+          test -f generated-hosts/copilot/.github/copilot-instructions.md
+
+      - name: Run lifecycle simulation
+        run: |
+          python scripts/simulate_lifecycle.py
+
+      - name: Generate lifecycle diagram
+        run: |
+          python scripts/generate_lifecycle_diagram.py
+
+      - name: Verify lifecycle reports
+        run: |
+          test -f reports/lifecycle-report.md
+          test -f reports/lifecycle-diagram.md
+
+      - name: CI summary
+        run: |
+          echo "## Skill Framework CI Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Adapter generation completed" >> $GITHUB_STEP_SUMMARY
+          echo "- Generated host outputs verified" >> $GITHUB_STEP_SUMMARY
+          echo "- Lifecycle simulation completed" >> $GITHUB_STEP_SUMMARY
+          echo "- Lifecycle diagram generated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload lifecycle reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lifecycle-reports
+          path: reports/
